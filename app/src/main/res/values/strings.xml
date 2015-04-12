@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">KBB3SendBroadcast</string>
+
+    <string name="button_send_broadcast">Send Broadcast</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,19 +1,35 @@
 package com.mobileappscompany.training.kbb3sendbroadcast;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
-public class SendBroadcastActivity extends ActionBarActivity implements View.OnClickListener{
+public class SendBroadcastActivity extends ActionBarActivity {
+
+    private Context context;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_broadcast);
+
+        context = this;
+        button = (Button)findViewById(R.id.buttonSendBroadcast);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendBroadcastIntent();
+            }
+        });
     }
 
 
@@ -39,14 +55,9 @@ public class SendBroadcastActivity extends ActionBarActivity implements View.OnC
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        sendBroadcastIntent();
-    }
-
     private void sendBroadcastIntent() {
         Intent intent = new Intent();
-        intent.setAction("com.mobileappscompany.send_broadcast");
+        intent.setAction("com.mobileappscompany.training.send_broadcast");
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         sendBroadcast(intent);
     }
